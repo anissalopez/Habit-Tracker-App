@@ -2,26 +2,21 @@ import React, { useEffect } from "react";
 import { Table, Container } from "react-bootstrap";
 import {format, startOfWeek, addDays, addWeeks, subWeeks } from "date-fns";
 import DateHeader from "./Header";
-import { useNavigate } from "react-router-dom";
 import { FaCheck, FaTrash } from 'react-icons/fa';
 import ChangeDates from "./ChangeDates";
 
-function HabitContainer({ setActiveDay, activeDay, habits}){
-    const navigate = useNavigate();
-
-    console.log(habits)
-
-
+function HabitContainer({ setActiveDay, activeDay, habits, updateCompletedHabits, deleteHabit}){
+ 
     const handleDelete = (id) => {
       if (window.confirm("Are you sure?")) {
-        
+        fetch(`http://localhost:3000/habits/${id}`, {
+            method: "DELETE"
+          })
+            .then(resp => resp.json())
+            .then(() => deleteHabit(id))
       };
     };
 
-    useEffect(() => {
-      
-    }, []);
-    
     const renderWeekDays = () => {
       let week = [];
       const startDate = startOfWeek(activeDay, { weekStartsOn: 1 });
@@ -33,7 +28,18 @@ function HabitContainer({ setActiveDay, activeDay, habits}){
     };
 
     const handleClick = (habit, date) => {
-        habit.datesCompleted.push(date)
+        habit.datesCompleted.push(date);
+
+        fetch(`http://localhost:3000/habits/${habit.id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            "accept": "application/json"
+          },
+          body: JSON.stringify(habit)
+        })
+          .then(resp => resp.json())
+          .then(data => updateCompletedHabits(data))
       };
 
 
@@ -87,7 +93,7 @@ function HabitContainer({ setActiveDay, activeDay, habits}){
                       <tr key={habit.habitName}>
                       <td>{habit.habitName}</td>
                       {renderButtons(habit)}
-                      <td><button onClick={()=>handleDelete(habit._id)} className="btn btn-danger"><FaTrash  /></button></td>
+                      <td><button onClick={()=>handleDelete(habit.id)} className="btn btn-danger"><FaTrash  /></button></td>
                      </tr>)})}
                 </tbody>
              </Table>
