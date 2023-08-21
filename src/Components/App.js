@@ -4,6 +4,7 @@ import MonthlyData from "./MonthlyData";
 import Navigation from "./NavBar";
 import HabitContainer from "./HabitContainer";
 import AddHabit from "./AddHabit";
+import HomePage from "./HomePage";
 
 function App() {
     const [activeDay, setActiveDay] = useState(new Date());
@@ -44,10 +45,11 @@ function App() {
     <div>
     <Navigation />
     <Routes>
-          <Route exact path="/monthlydata" element ={<MonthlyData habits={habits} setActiveDate={setActiveDay} activeDate={activeDay}/>} />
-          <Route exact path="/addhabit" element ={<AddHabit updateHabitList={updateHabitList} />} />
-          <Route exact path="/habits" element ={<HabitContainer updateCompletedHabits={updateCompletedHabits} habits={habits} activeDay={activeDay} setActiveDay={setActiveDay} deleteHabit={deleteHabit} />} />
-      </Routes>
+      <Route exact path="/monthlydata" element ={<MonthlyData habits={habits} setActiveDate={setActiveDay} activeDate={activeDay}/>} />
+      <Route exact path="/monthlydata" element ={<MonthlyData habits={habits} setActiveDate={setActiveDay} activeDate={activeDay}/>} />
+      <Route exact path="/addhabit" element ={<AddHabit updateHabitList={updateHabitList} />} />
+      <Route exact path="/habits" element ={<HabitContainer updateCompletedHabits={updateCompletedHabits} habits={habits} activeDay={activeDay} setActiveDay={setActiveDay} deleteHabit={deleteHabit} />} />
+    </Routes>
     </div>
   );
 };
