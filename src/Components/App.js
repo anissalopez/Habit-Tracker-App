@@ -45,7 +45,7 @@ function App() {
     <div>
     <Navigation />
     <Routes>
-      <Route exact path="/monthlydata" element ={<MonthlyData habits={habits} setActiveDate={setActiveDay} activeDate={activeDay}/>} />
+      <Route exact path="/" element ={<HomePage />} />
       <Route exact path="/monthlydata" element ={<MonthlyData habits={habits} setActiveDate={setActiveDay} activeDate={activeDay}/>} />
       <Route exact path="/addhabit" element ={<AddHabit updateHabitList={updateHabitList} />} />
       <Route exact path="/habits" element ={<HabitContainer updateCompletedHabits={updateCompletedHabits} habits={habits} activeDay={activeDay} setActiveDay={setActiveDay} deleteHabit={deleteHabit} />} />
