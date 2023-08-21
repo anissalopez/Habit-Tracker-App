@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {Routes, Route} from "react-router-dom";
 import MonthlyData from "./MonthlyData";
 import Navigation from "./NavBar";
-import HabitForm from "./AddHabit";
 import HabitContainer from "./HabitContainer";
 import AddHabit from "./AddHabit";
 
