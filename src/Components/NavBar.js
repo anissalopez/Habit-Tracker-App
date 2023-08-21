@@ -19,7 +19,7 @@ export default function Navigation() {
                     <FaPlus size={15} className="navIcon"  style={{color: "#ffffff",}} />
                   </Nav.Link>
                   <Nav.Link  className=" col-md-auto text-white"href="/monthlydata">
-                    <FaCalendar  size={15}className="col-md-auto text-white" style={{color: "#ffffff",}} />
+                    <FaCalendar  size={15}className="navIcon" style={{color: "#ffffff",}} />
                   </Nav.Link>
             
                 </Nav>
