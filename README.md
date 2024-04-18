@@ -4,6 +4,9 @@
 
 Online habit tracker to track and manage daily habits. 
 
+[![Watch the video](https://img.youtube.com/vi/ngG9mLaPW80/maxresdefault.jpg)](https://youtu.be/ngG9mLaPW80)
+
+
 
 ## Features:
 
